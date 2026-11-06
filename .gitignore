@@ -1,0 +1,12 @@
+# Internal working files: never publish these (the repository is public)
+*.xlsx
+~$*
+TODO.md
+font-samples.html
+.claude/
+.RData
+.Rhistory
+
+# Original logo files (the site uses the copies in assets/img)
+logo/
+logo.zip
