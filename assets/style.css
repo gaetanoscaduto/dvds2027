@@ -1,0 +1,252 @@
+/* Dag van de Sociologie 2027 – stylesheet */
+
+/* Tilburg University palette (as used on tilburguniversity.edu) */
+:root {
+  --navy: #003366;         /* TiU dark blue – headings, footer */
+  --blue: #006094;         /* TiU blue – header, hero, links */
+  --navy-2: #006094;
+  --accent: #cc9933;       /* TiU gold (logo) */
+  --accent-dark: #946110;  /* TiU dark gold – link hover */
+  --sand: #f1c685;         /* TiU sand – buttons on blue */
+  --accent-soft: #fbf0dc;
+  --ink: #1f2933;
+  --muted: #666666;
+  --line: #e3e3df;
+  --bg: #ffffff;
+  --bg-soft: #f2f2f0;      /* TiU light grey */
+  --radius: 10px;
+  --wrap: 1080px;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-head: "Anton", Impact, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main { flex: 1; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 700px) { .wrap { padding: 0 28px; } }
+
+a { color: var(--navy-2); text-underline-offset: 3px; }
+a:hover { color: var(--accent-dark); }
+
+h1, h2, h3 { font-family: var(--font-head); font-weight: 400; color: var(--navy); line-height: 1.1; letter-spacing: .01em; text-transform: uppercase; }
+h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 .4em; }
+h2 { font-size: 1.6rem; margin: 2.2em 0 .6em; }
+h3 { font-size: 1.2rem; margin: 1.6em 0 .4em; }
+
+/* ---------- Header / nav ---------- */
+#site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+#site-header .bar {
+  max-width: 1240px; margin: 0 auto; padding: 0 16px;
+  display: flex; align-items: center; gap: 24px; min-height: 60px;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-size: 1.05rem; white-space: nowrap; }
+.brand:hover { color: #fff; }
+.brand strong { color: var(--sand); }
+
+#site-nav { display: flex; flex: 1; justify-content: space-between; align-items: center; }
+#site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; }
+#site-nav a {
+  display: block; padding: 8px 10px; border-radius: 6px;
+  color: rgba(255,255,255,.85); text-decoration: none; font-size: .95rem; white-space: nowrap;
+}
+#site-nav a:hover { color: #fff; background: rgba(255,255,255,.08); }
+#site-nav a[aria-current="page"] { color: #fff; background: rgba(255,255,255,.14); }
+#site-nav a.lang { border: 1px solid rgba(255,255,255,.35); }
+
+.nav-toggle {
+  display: none; margin-left: auto;
+  background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4);
+  border-radius: 6px; padding: 6px 12px; font: inherit; font-size: .9rem; cursor: pointer;
+}
+
+@media (max-width: 1199px) {
+  .nav-toggle { display: block; }
+  #site-header .bar { flex-wrap: wrap; gap: 0; }
+  #site-nav { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; padding: 8px 0 14px; }
+  #site-header.open #site-nav { display: flex; }
+  #site-nav ul { flex-direction: column; }
+  #site-nav .nav-side { flex-direction: row; flex-wrap: wrap; margin-top: 8px; border-top: 1px solid rgba(255,255,255,.15); padding-top: 8px; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  /* Campus photo with a TiU-blue overlay so the title stays readable */
+  background:
+    linear-gradient(180deg, rgba(0,51,102,.12) 0%, rgba(0,51,102,.3) 55%, rgba(0,51,102,.55) 100%),
+    url("img/hero.jpg") center 60% / cover no-repeat,
+    var(--blue);
+  color: #fff;
+  padding: 120px 0 104px;
+  min-height: min(78vh, 680px);
+  display: flex; flex-direction: column; justify-content: center;
+  text-align: center;
+}
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2.6rem, 8vw, 5.6rem);
+  font-weight: 400;
+  letter-spacing: .01em;
+  line-height: 1.02;
+  margin: 0 auto .5em;
+  max-width: 11em;
+}
+.hero h1 .year { display: block; color: var(--sand); font-size: 1.3em; margin-top: .06em; }
+.hero-meta {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0;
+  margin: 0 0 36px; padding: 0; list-style: none; font-size: 1.15rem; color: #fff;
+}
+.hero-meta li + li::before { content: ""; display: inline-block; width: 1px; height: 1em; background: rgba(255,255,255,.5); margin: 0 18px; vertical-align: -2px; }
+.hero .btn-row { justify-content: center; }
+
+.page-head { background: var(--bg-soft); border-bottom: 1px solid var(--line); padding: 44px 0 36px; }
+.page-head h1 { margin: 0; }
+.page-head p { color: var(--muted); margin: .3em 0 0; }
+
+/* ---------- Content ---------- */
+.content { padding: 24px 0 72px; }
+.content > .wrap > :first-child { margin-top: 1.2em; }
+.prose { max-width: 46em; }
+
+.btn {
+  display: inline-block; padding: 11px 22px; border-radius: 999px;
+  background: var(--sand); color: var(--navy); font-weight: 600; text-decoration: none;
+  border: 2px solid var(--sand);
+}
+.btn:hover { background: transparent; color: var(--sand); }
+.content .btn { background: var(--navy); border-color: var(--navy); color: #fff; }
+.content .btn:hover { background: transparent; color: var(--navy); }
+.btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+.btn.ghost:hover { border-color: #fff; color: #fff; }
+.content .btn.ghost { color: var(--navy); border-color: var(--navy); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 1.2em 0; }
+.card { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; background: #fff; }
+.card h3 { margin-top: 0; }
+.card p:last-child { margin-bottom: 0; }
+
+/* Key dates as calendar sheets */
+.calendar {
+  list-style: none; padding: 0; margin: 1.4em 0 0;
+  display: grid; gap: 22px 18px; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+}
+.cal {
+  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 1px 0 var(--line), 0 6px 0 -3px #fff, 0 6px 0 -2px var(--line);  /* hint of a second sheet underneath */
+}
+/* two binder rings on the top edge */
+.cal::before, .cal::after {
+  content: ""; position: absolute; top: 7px; width: 8px; height: 8px; border-radius: 50%;
+  background: #fff; box-shadow: inset 0 1px 2px rgba(0,0,0,.35);
+}
+.cal::before { left: 26%; }
+.cal::after  { right: 26%; }
+.cal-label {
+  align-self: stretch; background: var(--blue); color: #fff;
+  padding: 22px 12px 10px; min-height: 6.3em;  /* room for 3 lines, so all dates line up */
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; font-weight: 700; line-height: 1.3;
+}
+.cal-day, .cal-month, .cal-year {
+  font-family: var(--font-head); color: var(--navy); text-transform: uppercase;
+  font-size: 2.1rem; line-height: 1.05; letter-spacing: .02em;
+}
+.cal-day { margin-top: 16px; }
+.cal-year { margin-bottom: 18px; }
+.cal-main .cal-label { background: var(--accent); color: var(--navy); }
+.cal-main { border-color: var(--accent); }
+/* placeholders inside the cards stay unstyled (class "tbd" only marks them for searching) */
+.cal .tbd { background: none; border: 0; padding: 0; font-style: normal; }
+.cal .cal-day.tbd { color: #c4c8cc; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 1em 0; }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--bg-soft); color: var(--navy); font-weight: 600; }
+
+.note { background: var(--bg-soft); border-left: 4px solid var(--navy-2); padding: 14px 18px; border-radius: 0 var(--radius) var(--radius) 0; }
+
+/* People (keynotes / committee) */
+.people { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); margin: 1em 0; }
+.person { text-align: center; }
+.person .avatar {
+  width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 10px;
+  background: var(--bg-soft); border: 1px dashed var(--line); object-fit: cover;
+  display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .8rem;
+}
+.person .name { font-weight: 600; margin: 0; }
+.person .role { color: var(--muted); font-size: .9rem; margin: 0; }
+
+.map { width: 100%; height: 360px; border: 1px solid var(--line); border-radius: var(--radius); }
+
+/* Placeholder text still to be filled in – search the source for class="tbd" */
+.tbd {
+  background: var(--accent-soft);
+  border-bottom: 1px dashed var(--accent);
+  padding: 0 4px; border-radius: 3px;
+  font-style: italic;
+}
+.hero .tbd { background: rgba(255,255,255,.12); color: #fff; }
+
+/* ---------- Footer ---------- */
+#site-footer { background: var(--navy); color: rgba(255,255,255,.8); padding: 40px 0; font-size: .92rem; }
+#site-footer a { color: #fff; }
+#site-footer a:hover { color: var(--sand); }
+.footer-grid { display: grid; gap: 24px; grid-template-columns: 2fr 1fr 1fr; }
+.footer-title { color: #fff; font-weight: 600; margin: 0 0 6px; }
+.footer-grid p { margin: 0 0 6px; }
+.footer-logos { display: flex; flex-direction: column; gap: 6px; }
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Tilburg University logo ---------- */
+.brand .tiu-logo { height: 36px; width: auto; display: block; }
+.brand .divider { width: 1px; align-self: stretch; margin: 14px 2px; background: rgba(255,255,255,.4); }
+#site-footer .tiu-logo { height: 48px; width: auto; display: block; margin-bottom: 12px; }
+@media (max-width: 420px) { .brand .tiu-logo { height: 30px; } }
+
+/* ---------- Committee ---------- */
+.person .initials {
+  width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--blue); color: #fff; font-family: var(--font-head); font-size: 1.6rem;
+}
+.person .photo {
+  width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 10px;
+  display: block; object-fit: cover; background: var(--bg-soft);
+}
+.hero h1, .hero-meta { text-shadow: 0 2px 20px rgba(0,30,60,.65), 0 1px 3px rgba(0,30,60,.4); }
+@media (max-width: 600px) {
+  .hero-meta { flex-direction: column; align-items: center; }
+  .hero-meta li + li::before { display: none; }
+  .hero { padding: 80px 0 72px; }
+}
+
+/* ---------- Tilburg University 100-years pennant ---------- */
+.hero, .page-head { position: relative; }
+.lustrum { position: absolute; top: 0; height: auto; display: block; }
+.hero .lustrum { right: 4%; width: clamp(58px, 11vw, 150px); }
+.page-head .lustrum { right: max(16px, calc((100% - var(--wrap)) / 2 + 28px)); width: 68px; }
+.page-head h1 { padding-right: 84px; }
