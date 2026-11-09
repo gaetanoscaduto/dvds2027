@@ -250,3 +250,5 @@ th { background: var(--bg-soft); color: var(--navy); font-weight: 600; }
 .hero .lustrum { right: 4%; width: clamp(58px, 11vw, 150px); }
 .page-head .lustrum { right: max(16px, calc((100% - var(--wrap)) / 2 + 28px)); width: 68px; }
 .page-head h1 { padding-right: 84px; }
+/* on small screens the title starts below the pennant */
+@media (max-width: 700px) { .hero { padding-top: 144px; } }
