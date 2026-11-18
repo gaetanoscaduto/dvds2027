@@ -224,7 +224,7 @@ th { background: var(--bg-soft); color: var(--navy); font-weight: 600; }
 /* ---------- Tilburg University logo ---------- */
 .brand .tiu-logo { height: 36px; width: auto; display: block; }
 .brand .divider { width: 1px; align-self: stretch; margin: 14px 2px; background: rgba(255,255,255,.4); }
-#site-footer .tiu-logo { height: 48px; width: auto; display: block; margin-bottom: 12px; }
+#site-footer .tiu-logo { height: 48px; width: auto; display: block; }
 @media (max-width: 420px) { .brand .tiu-logo { height: 30px; } }
 
 /* ---------- Committee ---------- */
@@ -252,3 +252,8 @@ th { background: var(--bg-soft); color: var(--navy); font-weight: 600; }
 .page-head h1 { padding-right: 84px; }
 /* on small screens the title starts below the pennant */
 @media (max-width: 700px) { .hero { padding-top: 144px; } }
+
+/* Footer: Tilburg University and NSV logos side by side */
+.footer-brands { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; margin-bottom: 14px; }
+.footer-brands a { display: block; line-height: 0; }
+#site-footer .nsv-logo { height: 48px; width: auto; display: block; }

@@ -89,9 +89,14 @@ const TEXT = {
     footer.innerHTML = `
       <div class="wrap footer-grid">
         <div>
-          <a href="https://www.tilburguniversity.edu/" target="_blank" rel="noopener">
-            <img class="tiu-logo" src="${root}assets/img/tilburg-university-logo-white.svg" alt="Tilburg University" width="189" height="48">
-          </a>
+          <div class="footer-brands">
+            <a href="https://www.tilburguniversity.edu/" target="_blank" rel="noopener">
+              <img class="tiu-logo" src="${root}assets/img/tilburg-university-logo-white.svg" alt="Tilburg University" width="189" height="48">
+            </a>
+            <a href="https://www.nsv-sociologie.nl/" target="_blank" rel="noopener">
+              <img class="nsv-logo" src="${root}assets/img/nsv-logo.png" alt="Nederlandse Sociologische Vereniging (NSV)" width="93" height="48">
+            </a>
+          </div>
           <p class="footer-title">Dag van de Sociologie 2027</p>
           <p>${t.org}</p>
         </div>
